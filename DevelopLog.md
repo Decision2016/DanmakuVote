@@ -1,6 +1,6 @@
 # 开发日志
 
-* 相关开发进度见博客：[Decision`s blog](decision01.cn)
+* 相关开发进度见博客：[Decision`s blog](https://decision01.cn/)
 
 ## todo list
 * 进行相关命令的构思与完善
