@@ -1,0 +1,10 @@
+name: BilibiliVote
+version: ${project.version}
+main: cn.decision01.bilibilivote.BilibiliVote
+api-version: 1.13
+commands:
+  setid:
+    description: Set your bilibili live id
+    usage: /setid [live id]
+    permission: op
+    permission-message: You don`t have <permission>
