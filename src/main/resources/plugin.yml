@@ -8,3 +8,9 @@ commands:
     usage: /setid [live id]
     permission: op
     permission-message: You don`t have <permission>
+  # todo: permission的设置存在权限节点问题，在正式测试之前需要进行修正
+  setworld:
+    description: Set now world efffected
+    usage: /setworld
+    permission: op
+    permission-message: You don`t have <permission>

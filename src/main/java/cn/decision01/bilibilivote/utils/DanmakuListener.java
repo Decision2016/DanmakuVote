@@ -4,7 +4,6 @@ package cn.decision01.bilibilivote.utils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.codec.binary.Base64;
-import org.java_websocket.client.WebSocketClient;
 import java.io.*;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -16,23 +15,20 @@ public class DanmakuListener {
     private static final String confUrl = "https://api.live.bilibili.com/room/v1/Danmu/getConf?room_id=";
     private static final String requestUrl = "https://api.live.bilibili.com/xlive/web-room/v1/index/getInfoByRoom?room_id=";
 
-    private DataOutputStream dataOutputStream;
-    private byte[] headBytes = new byte[16];
+    private Socket socket;
+    private String token;
+    private int RoomId = 5850690;
+    private boolean running = true;
+    private int startTime, endTime;
 
-    WebSocketClient wssClient;
-    Socket socket;
-    String address, token;
-    int port, RoomId = 5850690;
-    boolean running = true;
-
-    public byte[] shortToBytes(short x) {
+    private byte[] shortToBytes(short x) {
         byte[] b = new byte[2];
         b[1] = (byte) (x & 0xff);
         b[0] = (byte) (x & 0xff00);
         return b;
     }
 
-    public byte[] intToBytes(int x) {
+    private byte[] intToBytes(int x) {
         byte[] b = new byte[4];
         b[3] = (byte) (x & 0xff);
         b[2] = (byte) (x & 0xff00);
@@ -41,19 +37,19 @@ public class DanmakuListener {
         return b;
     }
 
-    public boolean isRunning() {
+    private boolean isRunning() {
         return running && socket != null && socket.isConnected() && !socket.isClosed();
     }
 
-    public int bytesToInt(byte[] bs, int start) {
+    private int bytesToInt(byte[] bs, int start) {
         int res = 0;
         ByteBuffer bb = ByteBuffer.wrap(bs, start, 4);
         res = bb.getInt();
         return res;
     }
 
-    private static int getLiveRoom() {
-        String livingInfo = HttpRequestUtil.get(requestUrl + "22088974");
+    private static int getLiveRoom(int _roomid) {
+        String livingInfo = HttpRequestUtil.get(requestUrl + _roomid);
         // todo: 获取OP设置的直播间号
         JSONObject livingJson = JSONObject.parseObject(livingInfo);
         JSONObject data = livingJson.getJSONObject("data");
@@ -66,7 +62,7 @@ public class DanmakuListener {
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream(totalLength);
             bout.write(intToBytes(totalLength));
-            bout.write(shortToBytes((short) 16));
+            bout.write(shortToBytes((short) headerLength));
             bout.write(shortToBytes((short) proVer));
             bout.write(intToBytes(operation));
             bout.write(intToBytes(param));
@@ -97,7 +93,7 @@ public class DanmakuListener {
     }
 
     private void sendAuth() throws IOException {
-        int roomId = getLiveRoom();
+        int roomId = getLiveRoom(RoomId);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("uid", 0);
         jsonObject.put("roomid", roomId);
@@ -110,17 +106,26 @@ public class DanmakuListener {
                 stringInfo.getBytes(StandardCharsets.UTF_8));
     }
 
+    private String parseDanmaku(String _msg) {
+        // todo: parse Danmaku
+        return null;
+    }
+
     private void sendHeartBeat() throws IOException {
         sendSocketData(16, 16, 2, 2, 1, null);
     }
 
+    private void setTime(int _start, int delta) {
+        startTime = _start;
+        endTime = startTime + delta;
+    }
     public void listenLiving() throws IOException {
-        JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtil.get(confUrl + "22088974"));
+        JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtil.get(confUrl + RoomId));
         JSONArray jsonArray;
 
         token = String.valueOf(jsonObject.getJSONObject("data").get("token"));
-        port = jsonObject.getJSONObject("data").getInteger("port");
-        address = jsonObject.getJSONObject("data").getString("host");
+        int port = jsonObject.getJSONObject("data").getInteger("port");
+        String address = jsonObject.getJSONObject("data").getString("host");
         socket = new Socket(address, port);
         sendAuth();
 
@@ -193,7 +198,6 @@ public class DanmakuListener {
                     }
 
                     case 8: {
-                        System.out.println("已连接房间Socket。");
                         break;
                     }
                 }
@@ -207,16 +211,4 @@ public class DanmakuListener {
             }
         }
     }
-
-    private void pushValue(int value, byte[] bytes, int byte_len, int offset) {
-        for (int now = 0; now < byte_len; now ++) {
-            bytes[offset + now] = (byte) ((value >> (byte_len - now + 1)) & 0xff);
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        DanmakuListener danmakuListener = new DanmakuListener();
-        danmakuListener.listenLiving();
-    }
-
 }
