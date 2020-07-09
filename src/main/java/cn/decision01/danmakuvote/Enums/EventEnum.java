@@ -1,4 +1,4 @@
-package cn.decision01.bilibilivote.Enums;
+package cn.decision01.danmakuvote.Enums;
 
 public enum EventEnum {
     WORLD_CHANGE_SUNNY,

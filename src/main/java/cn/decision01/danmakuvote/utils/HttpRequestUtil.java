@@ -1,4 +1,4 @@
-package cn.decision01.bilibilivote.utils;
+package cn.decision01.danmakuvote.utils;
 
 import java.io.*;
 import java.net.HttpURLConnection;

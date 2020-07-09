@@ -1,11 +1,12 @@
-package cn.decision01.bilibilivote;
+package cn.decision01.danmakuvote;
 
+import cn.decision01.danmakuvote.event.CommandEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class BilibiliVote extends JavaPlugin {
+public final class DanmakuVote extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -20,6 +21,7 @@ public final class BilibiliVote extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        return super.onCommand(sender, command, label, args);
+        // todo: check command sender
+        return CommandEvent.onCommand(sender, command, label, args);
     }
 }

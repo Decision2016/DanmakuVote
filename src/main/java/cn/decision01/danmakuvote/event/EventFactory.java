@@ -1,8 +1,7 @@
-package cn.decision01.bilibilivote.event;
+package cn.decision01.danmakuvote.event;
 
-import cn.decision01.bilibilivote.Enums.EventEnum;
-import cn.decision01.bilibilivote.Vote;
-import cn.decision01.bilibilivote.VoteEvents.WeatherChange;
+import cn.decision01.danmakuvote.Enums.EventEnum;
+import cn.decision01.danmakuvote.VoteEvents.WeatherChange;
 
 public class EventFactory {
     public static VoteEvent generateEvent(EventEnum eventType, String worldName) {

@@ -1,13 +1,12 @@
-package cn.decision01.bilibilivote.event;
+package cn.decision01.danmakuvote.event;
 
-import cn.decision01.bilibilivote.Enums.EventEnum;
+import cn.decision01.danmakuvote.Enums.EventEnum;
 
-public class WorldEvent implements VoteEvent {
+public class WorldEvent extends VoteEvent {
     protected String worldName = null;
     private String eventName = null;
     private String description = null;
     protected EventEnum EventType;
-    int count;
 
     public WorldEvent(String _worldName, String _eventName, String _description, EventEnum _type) {
         worldName = _worldName;
@@ -17,7 +16,13 @@ public class WorldEvent implements VoteEvent {
         count = 0;
     }
 
+    @Override
     public void addCount() {
         count++;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
     }
 }

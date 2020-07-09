@@ -1,4 +1,4 @@
-package cn.decision01.bilibilivote.utils;
+package cn.decision01.danmakuvote.utils;
 
 
 import com.alibaba.fastjson.JSONArray;
@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import java.io.*;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
@@ -19,33 +18,10 @@ public class DanmakuListener {
     private String token;
     private int RoomId = 5850690;
     private boolean running = true;
-    private int startTime, endTime;
-
-    private byte[] shortToBytes(short x) {
-        byte[] b = new byte[2];
-        b[1] = (byte) (x & 0xff);
-        b[0] = (byte) (x & 0xff00);
-        return b;
-    }
-
-    private byte[] intToBytes(int x) {
-        byte[] b = new byte[4];
-        b[3] = (byte) (x & 0xff);
-        b[2] = (byte) (x & 0xff00);
-        b[1] = (byte) (x & 0xff0000);
-        b[0] = (byte) (x & 0xff000000);
-        return b;
-    }
+    private long startTime, endTime;
 
     private boolean isRunning() {
-        return running && socket != null && socket.isConnected() && !socket.isClosed();
-    }
-
-    private int bytesToInt(byte[] bs, int start) {
-        int res = 0;
-        ByteBuffer bb = ByteBuffer.wrap(bs, start, 4);
-        res = bb.getInt();
-        return res;
+        return running && socket != null && socket.isConnected() && !socket.isClosed() && (System.currentTimeMillis() <= endTime);
     }
 
     private static int getLiveRoom(int _roomid) {
@@ -61,11 +37,11 @@ public class DanmakuListener {
 
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream(totalLength);
-            bout.write(intToBytes(totalLength));
-            bout.write(shortToBytes((short) headerLength));
-            bout.write(shortToBytes((short) proVer));
-            bout.write(intToBytes(operation));
-            bout.write(intToBytes(param));
+            bout.write(ByteUtils.intToBytes(totalLength));
+            bout.write(ByteUtils.shortToBytes((short) headerLength));
+            bout.write(ByteUtils.shortToBytes((short) proVer));
+            bout.write(ByteUtils.intToBytes(operation));
+            bout.write(ByteUtils.intToBytes(param));
 
             if (data != null && data.length != 0) {
                 bout.write(data);
@@ -115,11 +91,11 @@ public class DanmakuListener {
         sendSocketData(16, 16, 2, 2, 1, null);
     }
 
-    private void setTime(int _start, int delta) {
+    public void setTime(long _start, long delta) {
         startTime = _start;
         endTime = startTime + delta;
     }
-    public void listenLiving() throws IOException {
+    public int listenLiving() throws IOException {
         JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtil.get(confUrl + RoomId));
         JSONArray jsonArray;
 
@@ -152,7 +128,7 @@ public class DanmakuListener {
             System.out.println(size);
             if (size > 0) {
                 int bufferPos = 0;
-                int packageLength = bytesToInt(stableBuffer, bufferPos);
+                int packageLength = ByteUtils.bytesToInt(stableBuffer, bufferPos);
 
                 if (packageLength < 16 || packageLength > size) {
                     error_cnt += 1;
@@ -172,7 +148,7 @@ public class DanmakuListener {
                 bufferPos += 2;
 
                 // action
-                int action = bytesToInt(stableBuffer, bufferPos);
+                int action = ByteUtils.bytesToInt(stableBuffer, bufferPos);
                 bufferPos += 4;
 
                 int bodyLength = packageLength - 16;
@@ -210,5 +186,8 @@ public class DanmakuListener {
                 }
             }
         }
+
+        // todo: 返回total
+        return 0;
     }
 }

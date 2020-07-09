@@ -1,8 +1,7 @@
-package cn.decision01.bilibilivote.VoteEvents;
+package cn.decision01.danmakuvote.VoteEvents;
 
-import cn.decision01.bilibilivote.Enums.EventEnum;
-import cn.decision01.bilibilivote.event.PlayerEvent;
-import org.bukkit.Bukkit;
+import cn.decision01.danmakuvote.Enums.EventEnum;
+import cn.decision01.danmakuvote.event.PlayerEvent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

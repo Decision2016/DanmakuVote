@@ -1,6 +1,6 @@
-name: BilibiliVote
+name: DanmakuVote
 version: ${project.version}
-main: cn.decision01.bilibilivote.BilibiliVote
+main: cn.decision01.bilibilivote.DanmakuVote
 api-version: 1.13
 commands:
   setid:

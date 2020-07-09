@@ -1,8 +1,8 @@
-package cn.decision01.bilibilivote.event;
+package cn.decision01.danmakuvote.event;
 
-import cn.decision01.bilibilivote.Enums.EventEnum;
+import cn.decision01.danmakuvote.Enums.EventEnum;
 
-public class PlayerEvent implements VoteEvent {
+public class PlayerEvent extends VoteEvent {
     private String eventName = null;
     private String description = null;
     protected EventEnum EventType;
@@ -17,5 +17,9 @@ public class PlayerEvent implements VoteEvent {
 
     public void addCount() {
         count++;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
