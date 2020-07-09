@@ -7,4 +7,5 @@ public abstract class VoteEvent {
     public abstract int getCount();
     public abstract void effect();
     public abstract String getEventName();
+    public abstract String getDescription();
 }

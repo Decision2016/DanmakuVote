@@ -6,6 +6,7 @@ import cn.decision01.danmakuvote.event.VoteEvent;
 import cn.decision01.danmakuvote.utils.DanmakuListener;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.*;
 
 import java.io.File;
@@ -74,7 +75,8 @@ public class Vote {
 
         objective.unregister();
         int index = getResult();
-        Bukkit.getLogger().info("Choose: " + events[index].getEventName());
+        Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
+        Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
         events[index].effect();
     }
 }

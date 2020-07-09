@@ -22,8 +22,7 @@ public class VoteDebugExecutor implements CommandExecutor {
             return false;
         }
 
-        BukkitTask task = new DanmakuListenTask(plugin).runTask(plugin);
-        Bukkit.getLogger().info("任务启动");
+        BukkitTask task = new DanmakuListenTask(plugin).runTaskAsynchronously(plugin);
         return true;
     }
 }

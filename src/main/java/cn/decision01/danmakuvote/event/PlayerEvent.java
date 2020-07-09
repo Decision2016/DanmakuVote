@@ -30,4 +30,9 @@ public class PlayerEvent extends VoteEvent {
     public String getEventName() {
         return eventName;
     }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
 }
