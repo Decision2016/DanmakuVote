@@ -1,2 +1,3 @@
-# BilibiliVote
-让Minecraft服务器和bilibili直播间进行互动修改天气或其他操作的插件，暂时开个坑
+# DanmakuVote
+
+

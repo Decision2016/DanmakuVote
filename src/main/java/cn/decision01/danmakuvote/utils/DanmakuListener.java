@@ -108,7 +108,7 @@ public class DanmakuListener {
     }
 
     private String parseDanmaku(String _msg) {
-        // todo: parse Danmaku
+        Bukkit.getLogger().info("Danmaku Receive:" + _msg);
         JSONObject danmakuJson = JSONObject.parseObject(_msg.substring(16));
         return danmakuJson.getJSONArray("info").getString(1);
     }
