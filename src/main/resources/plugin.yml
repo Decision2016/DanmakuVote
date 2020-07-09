@@ -1,6 +1,6 @@
 name: DanmakuVote
 version: ${project.version}
-main: cn.decision01.bilibilivote.DanmakuVote
+main: cn.decision01.danmakuvote.DanmakuVote
 api-version: 1.13
 commands:
   setid:
@@ -14,3 +14,14 @@ commands:
     usage: /setworld
     permission: op
     permission-message: You don`t have <permission>
+  switchvote:
+    description: Switch plugin running status
+    usage: /switchvote
+    permission: op
+    permission-message: You don`t have <permission>
+  debugvote:
+    description: Debug Vote
+    usage: /debugvote
+    permission: op
+    permission-message: You don`t have <permission>
+permissions:

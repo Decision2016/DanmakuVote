@@ -5,12 +5,14 @@ import cn.decision01.danmakuvote.event.WorldEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
+import static org.bukkit.Bukkit.getLogger;
+
 public class WeatherChange extends WorldEvent {
     private World world;
 
     public WeatherChange(String _worldName, String _eventName, String _description, EventEnum _type) {
         super(_worldName, _eventName, _description, _type);
-        world = Bukkit.getWorld(super.worldName);
+        world = Bukkit.getServer().getWorld(super.worldName);
     }
 
     public void setStorm() {
@@ -30,7 +32,8 @@ public class WeatherChange extends WorldEvent {
         }
     }
 
-    public void effect() {
+    public final void effect() {
+        getLogger().info("effect choosed:" + getEventName());
         switch (super.EventType) {
             case WORLD_CHANGE_STORM: {
                 setStorm();

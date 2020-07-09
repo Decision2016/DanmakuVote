@@ -7,6 +7,6 @@ public enum EventEnum {
 
     PLAYER_GENERATE_MOBS,
     PLAYER_TELEPORT,
-    PLAYER_FILE,
+    PLAYER_FIRE,
     PLAYER_THUNDER
 }

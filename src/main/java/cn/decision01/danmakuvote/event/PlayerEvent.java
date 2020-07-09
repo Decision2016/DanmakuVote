@@ -22,4 +22,12 @@ public class PlayerEvent extends VoteEvent {
     public int getCount() {
         return count;
     }
+
+    @Override
+    public void effect() {}
+
+    @Override
+    public String getEventName() {
+        return eventName;
+    }
 }

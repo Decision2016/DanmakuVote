@@ -1,6 +1,8 @@
 package cn.decision01.danmakuvote.event;
 
 import cn.decision01.danmakuvote.Enums.EventEnum;
+import cn.decision01.danmakuvote.VoteEvents.MonsterPut;
+import cn.decision01.danmakuvote.VoteEvents.PlayerTeleport;
 import cn.decision01.danmakuvote.VoteEvents.WeatherChange;
 
 public class EventFactory {
@@ -14,6 +16,12 @@ public class EventFactory {
             }
             case WORLD_CHANGE_THUNDER: {
                 return new WeatherChange(worldName, "Weather Thunder", "将天气修改为雷雨天", EventEnum.WORLD_CHANGE_THUNDER);
+            }
+            case PLAYER_GENERATE_MOBS: {
+                return new MonsterPut("Put Monster", "放置一个怪物到一个随机玩家身边", EventEnum.PLAYER_GENERATE_MOBS);
+            }
+            case PLAYER_TELEPORT: {
+                return new PlayerTeleport("Teleport Player", "传送玩家到一个随机位置", EventEnum.PLAYER_TELEPORT);
             }
         }
         return null;

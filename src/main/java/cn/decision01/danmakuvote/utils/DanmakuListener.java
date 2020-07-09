@@ -1,11 +1,18 @@
 package cn.decision01.danmakuvote.utils;
 
 
+import cn.decision01.danmakuvote.DanmakuVote;
+import cn.decision01.danmakuvote.event.VoteEvent;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.codec.binary.Base64;
+import org.bukkit.Bukkit;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
+
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
@@ -16,9 +23,16 @@ public class DanmakuListener {
 
     private Socket socket;
     private String token;
-    private int RoomId = 5850690;
+    private int RoomId, count;
     private boolean running = true;
     private long startTime, endTime;
+    private VoteEvent[] events;
+
+    public DanmakuListener(int roomid, VoteEvent[] _events) {
+        events = _events;
+        RoomId = roomid;
+        count = 0;
+    }
 
     private boolean isRunning() {
         return running && socket != null && socket.isConnected() && !socket.isClosed() && (System.currentTimeMillis() <= endTime);
@@ -48,7 +62,6 @@ public class DanmakuListener {
             }
 
             byte[] buffer = bout.toByteArray();
-            System.out.println(Base64.encodeBase64String(buffer));
 
             Thread t = new Thread(new Runnable() {
                 @Override
@@ -82,9 +95,22 @@ public class DanmakuListener {
                 stringInfo.getBytes(StandardCharsets.UTF_8));
     }
 
+    private void countDanmaku(String message) {
+        for (VoteEvent event : events) {
+            if (message.equals(event.getEventName())) {
+                event.addCount();
+                count ++;
+                Objective objective = Bukkit.getScoreboardManager().getMainScoreboard().getObjective("DanmakuVote");
+                Score score = objective.getScore(event.getEventName());
+                score.setScore(event.getCount());
+            }
+        }
+    }
+
     private String parseDanmaku(String _msg) {
         // todo: parse Danmaku
-        return null;
+        JSONObject danmakuJson = JSONObject.parseObject(_msg.substring(16));
+        return danmakuJson.getJSONArray("info").getString(1);
     }
 
     private void sendHeartBeat() throws IOException {
@@ -95,9 +121,9 @@ public class DanmakuListener {
         startTime = _start;
         endTime = startTime + delta;
     }
+
     public int listenLiving() throws IOException {
         JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtil.get(confUrl + RoomId));
-        JSONArray jsonArray;
 
         token = String.valueOf(jsonObject.getJSONObject("data").get("token"));
         int port = jsonObject.getJSONObject("data").getInteger("port");
@@ -112,6 +138,10 @@ public class DanmakuListener {
                     while (isRunning()) {
                         sendHeartBeat();
                         Thread.sleep(30000);
+                        if(System.currentTimeMillis() >= endTime) {
+                            running = false;
+                            socket.close();
+                        }
                     }
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
@@ -124,8 +154,16 @@ public class DanmakuListener {
         int error_cnt = 0;
         InputStream in = socket.getInputStream();
         while (isRunning()) {
-            int size = in.read(stableBuffer);
-            System.out.println(size);
+            int size;
+
+            try {
+                size = in.read(stableBuffer);
+            } catch (SocketException e) {
+                Bukkit.getLogger().info("弹幕监听结束");
+                running = false;
+                break;
+            }
+
             if (size > 0) {
                 int bufferPos = 0;
                 int packageLength = ByteUtils.bytesToInt(stableBuffer, bufferPos);
@@ -169,7 +207,8 @@ public class DanmakuListener {
                             e.printStackTrace();
                         }
                         String msg = new String(msgBuffer, 0, _size, "utf-8");
-                        System.out.println(msg);
+                        String danmaku = parseDanmaku(msg);
+                        countDanmaku(danmaku);
                         break;
                     }
 
@@ -186,8 +225,6 @@ public class DanmakuListener {
                 }
             }
         }
-
-        // todo: 返回total
-        return 0;
+        return count;
     }
 }

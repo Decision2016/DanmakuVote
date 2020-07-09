@@ -1,4 +1,4 @@
 package cn.decision01.danmakuvote.Commands;
 
-public class BilibiliVoteSetid {
+public class VoteCommand {
 }

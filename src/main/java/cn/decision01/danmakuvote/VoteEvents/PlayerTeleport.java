@@ -20,7 +20,7 @@ public class PlayerTeleport extends PlayerEvent {
         return null;
     }
 
-    public void effect() {
+    public final void effect() {
         // todo: 完善事件生效
         Player player = randomChosePlayer();
         Location destination = randomChoseLocation();
