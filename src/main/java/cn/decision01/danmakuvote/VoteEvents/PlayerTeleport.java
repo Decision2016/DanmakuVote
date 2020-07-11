@@ -2,6 +2,7 @@ package cn.decision01.danmakuvote.VoteEvents;
 
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.event.PlayerEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -11,7 +12,6 @@ public class PlayerTeleport extends PlayerEvent {
     }
 
     private Player randomChosePlayer() {
-        // todo: 随机选取玩家
         return null;
     }
 

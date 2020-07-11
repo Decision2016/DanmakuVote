@@ -6,17 +6,14 @@ import cn.decision01.danmakuvote.event.VoteEvent;
 import cn.decision01.danmakuvote.utils.DanmakuListener;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static org.bukkit.Bukkit.getLogger;
-
 public class Vote {
+    private final DanmakuVote plugin;
     private FileConfiguration config;
     private VoteEvent[] events = null;
     private int totalCount = 0;
@@ -24,10 +21,11 @@ public class Vote {
     private Objective objective;
     private String worldName;
 
-    public Vote(String _worldName, FileConfiguration _config) {
-        worldName = _worldName;
-        config = _config;
-        events = new VoteEvent[3];
+    public Vote(String _worldName, FileConfiguration _config, DanmakuVote plugin) {
+        this.worldName = _worldName;
+        this.config = _config;
+        this.events = new VoteEvent[3];
+        this.plugin = plugin;
     }
 
     private void choseEvent() throws IOException {
@@ -75,8 +73,10 @@ public class Vote {
 
         objective.unregister();
         int index = getResult();
-        Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
-        Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
-        events[index].effect();
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
+            Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
+            events[index].effect();
+        });
     }
 }

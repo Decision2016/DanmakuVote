@@ -18,7 +18,7 @@ public class DanmakuListenTask extends BukkitRunnable {
     public void run() {
         FileConfiguration config = plugin.getConfig();
 
-        Vote vote = new Vote(config.getString("Setting.worldName"), config);
+        Vote vote = new Vote(config.getString("Setting.worldName"), config, plugin);
         try {
             vote.runVote();
         } catch (IOException e) {

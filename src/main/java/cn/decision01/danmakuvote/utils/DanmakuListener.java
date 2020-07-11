@@ -108,7 +108,7 @@ public class DanmakuListener {
     }
 
     private String parseDanmaku(String _msg) {
-        Bukkit.getLogger().info("Danmaku Receive:" + _msg);
+        if (_msg.length() <= 16) return null;
         JSONObject danmakuJson = JSONObject.parseObject(_msg.substring(16));
         return danmakuJson.getJSONArray("info").getString(1);
     }
@@ -159,7 +159,6 @@ public class DanmakuListener {
             try {
                 size = in.read(stableBuffer);
             } catch (SocketException e) {
-                Bukkit.getLogger().info("弹幕监听结束");
                 running = false;
                 break;
             }
@@ -208,7 +207,7 @@ public class DanmakuListener {
                         }
                         String msg = new String(msgBuffer, 0, _size, "utf-8");
                         String danmaku = parseDanmaku(msg);
-                        countDanmaku(danmaku);
+                        if(danmaku != null) countDanmaku(danmaku);
                         break;
                     }
 

@@ -21,7 +21,7 @@ public class EventFactory {
                 return new MonsterPut("Put Monster", "放置一个怪物到一个随机玩家身边", EventEnum.PLAYER_GENERATE_MOBS);
             }
             case PLAYER_TELEPORT: {
-                return new PlayerTeleport("Teleport Player", "传送玩家到一个随机位置", EventEnum.PLAYER_TELEPORT);
+                return new PlayerTeleport("Teleport Player", "随机选取一名幸运玩家传送到一个随机位置", EventEnum.PLAYER_TELEPORT);
             }
         }
         return null;
