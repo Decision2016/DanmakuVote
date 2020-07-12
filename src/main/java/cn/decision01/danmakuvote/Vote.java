@@ -34,11 +34,13 @@ public class Vote {
         int length = EventEnum.values().length;
 
         Random r = new Random();
-        for (int i = 0; i < 3; i++) {
+        EventFactory factory = new EventFactory(plugin);
+        for (int i = 0; i < 2; i++) {
             now = EventEnum.values()[i];
-            events[i] = EventFactory.generateEvent(now, worldName);
+            events[i] = factory.generateEvent(now, worldName);
             // todo: 修改事件名称，载入OP设置的世界
         }
+        events[2] = factory.generateEvent(EventEnum.PLAYER_TELEPORT, worldName);
     }
 
     private int getResult() {
@@ -73,10 +75,10 @@ public class Vote {
 
         objective.unregister();
         int index = getResult();
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
-            Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
-            events[index].effect();
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
+                Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
+                events[index].effect();
         });
     }
 }

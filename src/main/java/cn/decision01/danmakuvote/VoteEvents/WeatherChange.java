@@ -1,5 +1,6 @@
 package cn.decision01.danmakuvote.VoteEvents;
 
+import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.event.WorldEvent;
 import org.bukkit.Bukkit;
@@ -8,9 +9,8 @@ import org.bukkit.World;
 public class WeatherChange extends WorldEvent {
     private World world;
 
-    public WeatherChange(String _worldName, String _eventName, String _description, EventEnum _type) {
-        super(_worldName, _eventName, _description, _type);
-        world = Bukkit.getServer().getWorld(super.worldName);
+    public WeatherChange(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
+        super(_worldName, _eventName, _description, _type, _plugin);
     }
 
     public void setStorm() {

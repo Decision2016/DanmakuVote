@@ -5,23 +5,27 @@ api-version: 1.13
 commands:
   setid:
     description: Set your bilibili live id
-    usage: /setid [live id]
+    usage: /vote setid [live id]
     permission: op
-    permission-message: You don`t have <permission>
-  # todo: permission的设置存在权限节点问题，在正式测试之前需要进行修正
+    permission-message: You don`t have <permission> permission.
   setworld:
     description: Set now world efffected
-    usage: /setworld
+    usage: /vote setworld
     permission: op
-    permission-message: You don`t have <permission>
-  switchvote:
+    permission-message: You don`t have <permission> permission
+  voteswitch:
     description: Switch plugin running status
-    usage: /switchvote
+    usage: /vote switch
     permission: op
-    permission-message: You don`t have <permission>
-  debugvote:
+    permission-message: You don`t have <permission> permission.
+  votedebug:
     description: Debug Vote
-    usage: /debugvote
+    usage: /vote debug
     permission: op
-    permission-message: You don`t have <permission>
-permissions:
+    permission-message: You don`t have <permission> permission.
+  timeset:
+    description: Vote time set
+    usage: /vote time set [random|static] [mintime maxtime | statictime]
+    permission: op
+    permission-message: You don`t have <permission> permission.
+

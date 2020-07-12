@@ -1,18 +1,21 @@
 package cn.decision01.danmakuvote.event;
 
+import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 
 public class PlayerEvent extends VoteEvent {
     private String eventName = null;
     private String description = null;
-    protected EventEnum EventType;
-    int count;
+    private EventEnum EventType;
+    private int count;
+    private DanmakuVote plugin;
 
-    public PlayerEvent(String _eventName, String _description, EventEnum _type) {
+    public PlayerEvent(String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
         eventName = _eventName;
         description = _description;
         EventType = _type;
         count = 0;
+        plugin = _plugin;
     }
 
     public void addCount() {

@@ -2,4 +2,5 @@ Bilibili:
   room_id: 0
 
 Setting:
-  worldName: "DIM-1"
+  worldName: "world"
+  switch: true
