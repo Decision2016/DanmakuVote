@@ -35,11 +35,8 @@ public class Vote {
 
         Random r = new Random();
         EventFactory factory = new EventFactory(plugin);
-        for (int i = 0; i < 2; i++) {
-            now = EventEnum.values()[i];
-            events[i] = factory.generateEvent(now, worldName);
-            // todo: 修改事件名称，载入OP设置的世界
-        }
+        events[0] = factory.generateEvent(EventEnum.WORLD_CHANGE_STORM, worldName);
+        events[1] = factory.generateEvent(EventEnum.PLAYER_GENERATE_MOBS, worldName);
         events[2] = factory.generateEvent(EventEnum.PLAYER_TELEPORT, worldName);
     }
 

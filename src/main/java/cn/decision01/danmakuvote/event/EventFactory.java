@@ -25,7 +25,7 @@ public class EventFactory {
                 return new WeatherChange(worldName, "Weather Thunder", "将天气修改为雷雨天", EventEnum.WORLD_CHANGE_THUNDER, plugin);
             }
             case PLAYER_GENERATE_MOBS: {
-                return new MonsterPut("Put Monster", "放置一个怪物到一个随机玩家身边", EventEnum.PLAYER_GENERATE_MOBS, plugin);
+                return new MonsterPut(worldName, "Put Monster", "放置一个怪物到一个随机玩家身边", EventEnum.PLAYER_GENERATE_MOBS, plugin);
             }
             case PLAYER_TELEPORT: {
                 return new PlayerTeleport(worldName, "Teleport Player", "随机选取一名幸运玩家传送到一个随机位置", EventEnum.PLAYER_TELEPORT, plugin);
