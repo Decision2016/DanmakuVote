@@ -4,3 +4,11 @@ Bilibili:
 Setting:
   worldName: "world"
   switch: true
+  random: true
+
+  # if random is true, use floor and ceil
+  floor: 0
+  celi: 300
+
+  # if random is false, use space as later time
+  space: 300
