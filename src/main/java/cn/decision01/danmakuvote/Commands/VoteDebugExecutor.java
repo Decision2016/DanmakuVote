@@ -22,7 +22,7 @@ public class VoteDebugExecutor implements CommandExecutor {
             return false;
         }
 
-        BukkitTask task = new DanmakuListenTask(plugin).runTaskAsynchronously(plugin);
+        Bukkit.broadcastMessage(String.format("当前线程数量:%d", plugin.getThreadCount()));
         return true;
     }
 }

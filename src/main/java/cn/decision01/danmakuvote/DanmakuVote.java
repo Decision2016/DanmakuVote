@@ -33,6 +33,7 @@ public final class DanmakuVote extends JavaPlugin {
         Bukkit.getPluginCommand("setid").setExecutor(new VoteIdSetExecutor(this));
         Bukkit.getPluginCommand("setworld").setExecutor(new VoteWorldSetExecutor(this));
         Bukkit.getPluginCommand("voteswitch").setExecutor(new VoteSwitchExecutor(this));
+        Bukkit.getPluginCommand("showthreadinfo").setExecutor(new VoteDebugExecutor(this));
     }
 
     @Override
@@ -56,5 +57,9 @@ public final class DanmakuVote extends JavaPlugin {
 
     public void threadFinished() {
         threadCount --;
+    }
+
+    public int getThreadCount() {
+        return threadCount;
     }
 }

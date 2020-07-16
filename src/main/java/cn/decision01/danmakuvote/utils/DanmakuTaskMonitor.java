@@ -23,7 +23,7 @@ public class DanmakuTaskMonitor {
         if (plugin.getSwitchStatus() && plugin.addThreadCount()) {
             DanmakuListenTask task = new DanmakuListenTask(plugin);
             task.runTaskLaterAsynchronously(plugin, timeSpace * Constants.onSecond);
-            Bukkit.broadcastMessage(String.format("下一次投票任务定于%d秒后进行", timeSpace));
+            Bukkit.getLogger().info(String.format("下一次投票任务定于%d秒后进行", timeSpace));
         }
     }
 }
