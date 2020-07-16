@@ -18,11 +18,6 @@ commands:
     usage: /vote switch
     permission: op
     permission-message: You don`t have <permission> permission.
-  votedebug:
-    description: Debug Vote
-    usage: /vote debug
-    permission: op
-    permission-message: You don`t have <permission> permission.
   timeset:
     description: Vote time set
     usage: /vote time set [random|static] [mintime maxtime | statictime]

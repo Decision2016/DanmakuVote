@@ -7,8 +7,8 @@ Setting:
   random: true
 
   # if random is true, use floor and ceil
-  floor: 0
-  celi: 300
+  floor: 180
+  ceil: 300
 
   # if random is false, use space as later time
   space: 300

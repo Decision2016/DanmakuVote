@@ -14,7 +14,7 @@ public class VoteEventTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (! plugin.getSwitchStatus()) return ;
+
         BukkitTask task = new DanmakuListenTask(plugin).runTaskAsynchronously(plugin);
         Bukkit.getLogger().info("Event async thread started.");
     }
