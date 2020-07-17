@@ -11,17 +11,18 @@ public class WeatherChange extends WorldEvent {
 
     public WeatherChange(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
         super(_worldName, _eventName, _description, _type, _plugin);
+        world = Bukkit.getWorld(_worldName);
     }
 
-    public void setStorm() {
+    private void setStorm() {
         world.setStorm(true);
     }
 
-    public void setThunder() {
+    private void setThunder() {
         world.setThundering(true);
     }
 
-    public void setSunny() {
+    private void setSunny() {
         if (world.hasStorm()) {
             world.setStorm(false);
         }

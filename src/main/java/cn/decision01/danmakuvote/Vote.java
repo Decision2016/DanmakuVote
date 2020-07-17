@@ -77,6 +77,7 @@ public class Vote {
         objective.unregister();
         int index = getResult();
         Bukkit.getScheduler().runTask(plugin, () -> {
+            if (Bukkit.getOnlinePlayers().isEmpty()) return ;
             Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
             Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
             events[index].effect();
