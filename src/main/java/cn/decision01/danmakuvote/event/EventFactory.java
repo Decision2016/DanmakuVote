@@ -2,6 +2,7 @@ package cn.decision01.danmakuvote.event;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
+import cn.decision01.danmakuvote.VoteEvents.AnimalPut;
 import cn.decision01.danmakuvote.VoteEvents.MonsterPut;
 import cn.decision01.danmakuvote.VoteEvents.PlayerTeleport;
 import cn.decision01.danmakuvote.VoteEvents.WeatherChange;
@@ -29,6 +30,9 @@ public class EventFactory {
             }
             case PLAYER_TELEPORT: {
                 return new PlayerTeleport(worldName, "Teleport Player", "随机选取一名幸运玩家传送到一个随机位置", EventEnum.PLAYER_TELEPORT, plugin);
+            }
+            case PLAYER_PUT_ANIMAL: {
+                return new AnimalPut(worldName, "Put Animal", "放置一个动物到随机玩家的身边", EventEnum.PLAYER_PUT_ANIMAL, plugin);
             }
         }
         return null;

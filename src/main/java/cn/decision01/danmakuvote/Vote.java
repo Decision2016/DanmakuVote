@@ -39,9 +39,15 @@ public class Vote {
 
         Random r = new Random();
         EventFactory factory = new EventFactory(plugin);
-        events[0] = factory.generateEvent(EventEnum.WORLD_CHANGE_STORM, worldName);
-        events[1] = factory.generateEvent(EventEnum.PLAYER_GENERATE_MOBS, worldName);
-        events[2] = factory.generateEvent(EventEnum.PLAYER_TELEPORT, worldName);
+
+        while (list.size() <= 3) {
+            // todo: 此处的代码逻辑需要等待测试
+            now = EventEnum.values()[r.nextInt(length)];
+            if (list.lastIndexOf(now) == -1) {
+                list.add(now);
+                events[list.size()] = factory.generateEvent(now, worldName);
+            }
+        }
     }
 
     private int getResult() {

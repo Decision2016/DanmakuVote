@@ -3,6 +3,7 @@ package cn.decision01.danmakuvote.VoteEvents;
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.event.WorldEvent;
+import cn.decision01.danmakuvote.utils.RandomChooser;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -28,6 +29,6 @@ public class MonsterPut extends WorldEvent {
     public final void effect() {
         Player player = randomChosePlayer();
         Location location = player.getLocation();
-        Bukkit.getWorld(worldName).spawnEntity(location, EntityType.CREEPER);
+        Bukkit.getWorld(worldName).spawnEntity(location, RandomChooser.RandomMonsterChoose());
     }
 }

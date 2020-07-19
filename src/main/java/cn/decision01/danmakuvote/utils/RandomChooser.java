@@ -14,11 +14,12 @@ public final class RandomChooser {
     }
 
     public static EntityType RandomMonsterChoose() {
-        // todo: 完善随机选取
-        return EntityType.CAVE_SPIDER;
+        EntityType[] MonsterArray = {EntityType.ENDERMAN, EntityType.SPIDER, EntityType.CREEPER, EntityType.SKELETON};
+        Random random = new Random();
+        return MonsterArray[random.nextInt(4)];
     }
 
     public static EntityType RandomAnimalChoose() {
-        return EntityType.CAVE_SPIDER;
+        return EntityType.CAT;
     }
 }
