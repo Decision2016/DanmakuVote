@@ -16,10 +16,12 @@ public final class RandomChooser {
     public static EntityType RandomMonsterChoose() {
         EntityType[] MonsterArray = {EntityType.ENDERMAN, EntityType.SPIDER, EntityType.CREEPER, EntityType.SKELETON};
         Random random = new Random();
-        return MonsterArray[random.nextInt(4)];
+        return MonsterArray[random.nextInt(MonsterArray.length)];
     }
 
     public static EntityType RandomAnimalChoose() {
-        return EntityType.CAT;
+        EntityType[] AnimalSet = {EntityType.SHEEP, EntityType.PIG, EntityType.COW, EntityType.COW, EntityType.WOLF};
+        Random random = new Random();
+        return AnimalSet[random.nextInt(AnimalSet.length)];
     }
 }

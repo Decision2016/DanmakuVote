@@ -40,12 +40,12 @@ public class Vote {
         Random r = new Random();
         EventFactory factory = new EventFactory(plugin);
 
-        while (list.size() <= 3) {
+        while (list.size() < 3) {
             // todo: 此处的代码逻辑需要等待测试
             now = EventEnum.values()[r.nextInt(length)];
             if (list.lastIndexOf(now) == -1) {
-                list.add(now);
                 events[list.size()] = factory.generateEvent(now, worldName);
+                list.add(now);
             }
         }
     }
@@ -83,14 +83,14 @@ public class Vote {
         objective.unregister();
         int index = getResult();
         Bukkit.getScheduler().runTask(plugin, () -> {
+            // switch to sync thread
             if (Bukkit.getOnlinePlayers().isEmpty()) return ;
             Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
             Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
             events[index].effect();
             plugin.threadFinished();
+            DanmakuTaskMonitor monitor = new DanmakuTaskMonitor(plugin);
+            monitor.addLaterTask();
         });
-
-        DanmakuTaskMonitor monitor = new DanmakuTaskMonitor(plugin);
-        monitor.addLaterTask();
     }
 }

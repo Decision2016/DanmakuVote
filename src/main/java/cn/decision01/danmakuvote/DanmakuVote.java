@@ -1,9 +1,6 @@
 package cn.decision01.danmakuvote;
 
-import cn.decision01.danmakuvote.Commands.VoteDebugExecutor;
-import cn.decision01.danmakuvote.Commands.VoteIdSetExecutor;
-import cn.decision01.danmakuvote.Commands.VoteSwitchExecutor;
-import cn.decision01.danmakuvote.Commands.VoteWorldSetExecutor;
+import cn.decision01.danmakuvote.Commands.*;
 import cn.decision01.danmakuvote.utils.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -32,6 +29,7 @@ public final class DanmakuVote extends JavaPlugin {
         Initialization();
         Bukkit.getPluginCommand("setid").setExecutor(new VoteIdSetExecutor(this));
         Bukkit.getPluginCommand("setworld").setExecutor(new VoteWorldSetExecutor(this));
+        Bukkit.getPluginCommand("time").setExecutor(new VoteTimeSetExecutor(this));
         Bukkit.getPluginCommand("voteswitch").setExecutor(new VoteSwitchExecutor(this));
         Bukkit.getPluginCommand("showthreadinfo").setExecutor(new VoteDebugExecutor(this));
     }
