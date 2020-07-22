@@ -1,11 +1,8 @@
 package cn.decision01.danmakuvote.utils;
 
 
-import cn.decision01.danmakuvote.DanmakuVote;
-import cn.decision01.danmakuvote.event.VoteEvent;
-import com.alibaba.fastjson.JSONArray;
+import cn.decision01.danmakuvote.Events.VoteEvent;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
@@ -40,7 +37,6 @@ public class DanmakuListener {
 
     private static int getLiveRoom(int _roomid) {
         String livingInfo = HttpRequestUtil.get(requestUrl + _roomid);
-        // todo: 获取OP设置的直播间号
         JSONObject livingJson = JSONObject.parseObject(livingInfo);
         JSONObject data = livingJson.getJSONObject("data");
         return data.getJSONObject("room_info").getInteger("room_id");
@@ -204,7 +200,7 @@ public class DanmakuListener {
                             _size = inflater.inflate(msgBuffer);
                             inflater.end();
                         } catch (DataFormatException e) {
-                            e.printStackTrace();
+                            break;
                         }
                         String msg = new String(msgBuffer, 0, _size, "utf-8");
                         String danmaku = parseDanmaku(msg);

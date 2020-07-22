@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.event;
+package cn.decision01.danmakuvote.Events;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;

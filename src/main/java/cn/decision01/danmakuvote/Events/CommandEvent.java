@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.event;
+package cn.decision01.danmakuvote.Events;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

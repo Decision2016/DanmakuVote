@@ -2,12 +2,10 @@ package cn.decision01.danmakuvote.VoteEvents;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
-import cn.decision01.danmakuvote.event.WorldEvent;
+import cn.decision01.danmakuvote.Events.WorldEvent;
 import cn.decision01.danmakuvote.utils.RandomChooser;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import java.util.Collections;

@@ -13,6 +13,8 @@ public class VoteTimeSetExecutor implements CommandExecutor {
 
     public VoteTimeSetExecutor(DanmakuVote plugin) {
         this.plugin = plugin;
+
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.event;
+package cn.decision01.danmakuvote.Events;
 
 public abstract class VoteEvent {
     int count;
