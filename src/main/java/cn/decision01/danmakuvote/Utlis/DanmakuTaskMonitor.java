@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.utils;
+package cn.decision01.danmakuvote.Utlis;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Tasks.DanmakuListenTask;
@@ -20,7 +20,9 @@ public class DanmakuTaskMonitor {
         else
             timeSpace = config.getInt("Setting.space");
 
-        if (plugin.getSwitchStatus() && plugin.addThreadCount()) {
+        if (! plugin.getSwitchStatus()) return ;
+
+        if (plugin.addThreadCount()) {
             DanmakuListenTask task = new DanmakuListenTask(plugin);
             task.runTaskLaterAsynchronously(plugin, timeSpace * Constants.onSecond);
             Bukkit.getLogger().info(String.format("下一次投票任务定于%d秒后进行", timeSpace));

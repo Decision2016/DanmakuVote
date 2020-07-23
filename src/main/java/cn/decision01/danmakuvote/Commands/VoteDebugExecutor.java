@@ -1,13 +1,11 @@
 package cn.decision01.danmakuvote.Commands;
 
 import cn.decision01.danmakuvote.DanmakuVote;
-import cn.decision01.danmakuvote.Tasks.DanmakuListenTask;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitTask;
 
 public class VoteDebugExecutor implements CommandExecutor {
     private final DanmakuVote plugin;

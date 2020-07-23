@@ -1,8 +1,8 @@
-package cn.decision01.danmakuvote.utils;
+package cn.decision01.danmakuvote.Utlis;
 
 import java.nio.ByteBuffer;
 
-public class ByteUtils {
+public class ByteUtlis {
     public static byte[] shortToBytes(short x) {
         byte[] b = new byte[2];
         b[1] = (byte) (x & 0xff);

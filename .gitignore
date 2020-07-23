@@ -1,3 +1,5 @@
 target/
 .idea/
 
+#ignore debug code
+src/main/java/cn/decision01/danmakuvote/Commands/VoteDebugExecutor.java

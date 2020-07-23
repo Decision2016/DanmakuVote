@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.utils;
+package cn.decision01.danmakuvote.Utlis;
 
 
 import cn.decision01.danmakuvote.Events.VoteEvent;
@@ -36,7 +36,7 @@ public class DanmakuListener {
     }
 
     private static int getLiveRoom(int _roomid) {
-        String livingInfo = HttpRequestUtil.get(requestUrl + _roomid);
+        String livingInfo = HttpRequestUtli.get(requestUrl + _roomid);
         JSONObject livingJson = JSONObject.parseObject(livingInfo);
         JSONObject data = livingJson.getJSONObject("data");
         return data.getJSONObject("room_info").getInteger("room_id");
@@ -47,11 +47,11 @@ public class DanmakuListener {
 
         try {
             ByteArrayOutputStream bout = new ByteArrayOutputStream(totalLength);
-            bout.write(ByteUtils.intToBytes(totalLength));
-            bout.write(ByteUtils.shortToBytes((short) headerLength));
-            bout.write(ByteUtils.shortToBytes((short) proVer));
-            bout.write(ByteUtils.intToBytes(operation));
-            bout.write(ByteUtils.intToBytes(param));
+            bout.write(ByteUtlis.intToBytes(totalLength));
+            bout.write(ByteUtlis.shortToBytes((short) headerLength));
+            bout.write(ByteUtlis.shortToBytes((short) proVer));
+            bout.write(ByteUtlis.intToBytes(operation));
+            bout.write(ByteUtlis.intToBytes(param));
 
             if (data != null && data.length != 0) {
                 bout.write(data);
@@ -119,7 +119,7 @@ public class DanmakuListener {
     }
 
     public int listenLiving() throws IOException {
-        JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtil.get(confUrl + RoomId));
+        JSONObject jsonObject = JSONObject.parseObject(HttpRequestUtli.get(confUrl + RoomId));
 
         token = String.valueOf(jsonObject.getJSONObject("data").get("token"));
         int port = jsonObject.getJSONObject("data").getInteger("port");
@@ -161,7 +161,7 @@ public class DanmakuListener {
 
             if (size > 0) {
                 int bufferPos = 0;
-                int packageLength = ByteUtils.bytesToInt(stableBuffer, bufferPos);
+                int packageLength = ByteUtlis.bytesToInt(stableBuffer, bufferPos);
 
                 if (packageLength < 16 || packageLength > size) {
                     error_cnt += 1;
@@ -181,7 +181,7 @@ public class DanmakuListener {
                 bufferPos += 2;
 
                 // action
-                int action = ByteUtils.bytesToInt(stableBuffer, bufferPos);
+                int action = ByteUtlis.bytesToInt(stableBuffer, bufferPos);
                 bufferPos += 4;
 
                 int bodyLength = packageLength - 16;

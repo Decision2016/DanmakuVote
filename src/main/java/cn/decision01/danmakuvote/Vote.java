@@ -3,8 +3,8 @@ package cn.decision01.danmakuvote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.Events.EventFactory;
 import cn.decision01.danmakuvote.Events.VoteEvent;
-import cn.decision01.danmakuvote.utils.DanmakuListener;
-import cn.decision01.danmakuvote.utils.DanmakuTaskMonitor;
+import cn.decision01.danmakuvote.Utlis.DanmakuListener;
+import cn.decision01.danmakuvote.Utlis.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scoreboard.*;
@@ -81,10 +81,11 @@ public class Vote {
         int index = getResult();
         Bukkit.getScheduler().runTask(plugin, () -> {
             // switch to sync thread
-            if (Bukkit.getOnlinePlayers().isEmpty()) return ;
-            Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
-            Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
-            events[index].effect();
+            if (! Bukkit.getOnlinePlayers().isEmpty()) {
+                Bukkit.broadcastMessage("观众选择了事件：" + events[index].getEventName());
+                Bukkit.broadcastMessage("事件效果：" + events[index].getDescription());
+                events[index].effect();
+            }
             plugin.threadFinished();
             DanmakuTaskMonitor monitor = new DanmakuTaskMonitor(plugin);
             monitor.addLaterTask();

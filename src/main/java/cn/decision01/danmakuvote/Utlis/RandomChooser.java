@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.utils;
+package cn.decision01.danmakuvote.Utlis;
 
 import org.bukkit.entity.EntityType;
 

@@ -1,13 +1,12 @@
 package cn.decision01.danmakuvote;
 
 import cn.decision01.danmakuvote.Commands.*;
-import cn.decision01.danmakuvote.utils.DanmakuTaskMonitor;
+import cn.decision01.danmakuvote.Utlis.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DanmakuVote extends JavaPlugin {
-    private boolean pluginSwitch;
     private int threadCount;
     private FileConfiguration config;
 
@@ -16,7 +15,6 @@ public final class DanmakuVote extends JavaPlugin {
         this.reloadConfig();
         this.config = getConfig();
         this.threadCount = 0;
-        this.pluginSwitch = config.getBoolean("Setting.switch");
 
         DanmakuTaskMonitor monitor = new DanmakuTaskMonitor(this);
         monitor.addLaterTask();
@@ -31,7 +29,7 @@ public final class DanmakuVote extends JavaPlugin {
         Bukkit.getPluginCommand("setworld").setExecutor(new VoteWorldSetExecutor(this));
         Bukkit.getPluginCommand("time").setExecutor(new VoteTimeSetExecutor(this));
         Bukkit.getPluginCommand("voteswitch").setExecutor(new VoteSwitchExecutor(this));
-        Bukkit.getPluginCommand("showthreadinfo").setExecutor(new VoteDebugExecutor(this));
+        // Bukkit.getPluginCommand("showthreadinfo").setExecutor(new VoteDebugExecutor(this));
     }
 
     @Override
@@ -40,20 +38,24 @@ public final class DanmakuVote extends JavaPlugin {
     }
 
     public void switchPlugin() {
-        this.pluginSwitch = !this.pluginSwitch;
+        boolean switchStatus = config.getBoolean("Setting.switch");
+        config.set("Setting.switch", ! switchStatus);
+        this.saveConfig();
     }
 
     public boolean getSwitchStatus() {
-        return this.pluginSwitch;
+        return config.getBoolean("Setting.switch");
     }
 
     public boolean addThreadCount() {
         if (threadCount >= 1) return false;
         threadCount ++;
+        Bukkit.getLogger().info("add thread");
         return true;
     }
 
     public void threadFinished() {
+        Bukkit.getLogger().info("thread finished");
         threadCount --;
     }
 

@@ -16,7 +16,6 @@ public class DanmakuListenTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        if (!plugin.getSwitchStatus()) return ;
         FileConfiguration config = plugin.getConfig();
 
         Vote vote = new Vote(config.getString("Setting.worldName"), config, plugin);
