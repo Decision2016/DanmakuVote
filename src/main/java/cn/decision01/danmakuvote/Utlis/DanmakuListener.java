@@ -191,7 +191,6 @@ public class DanmakuListener {
 
                 switch (action) {
                     case 5: {
-                        // todo： 在高并发的情况下无法处理所有信息
                         Inflater inflater = new Inflater();
 
                         inflater.setInput(stableBuffer, 16, packageLength - 16);

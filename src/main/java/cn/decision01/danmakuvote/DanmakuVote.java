@@ -18,7 +18,6 @@ public final class DanmakuVote extends JavaPlugin {
 
         DanmakuTaskMonitor monitor = new DanmakuTaskMonitor(this);
         monitor.addLaterTask();
-        // todo: 配置文件不存在的情况下进行异常处理
     }
 
     @Override
@@ -50,12 +49,10 @@ public final class DanmakuVote extends JavaPlugin {
     public boolean addThreadCount() {
         if (threadCount >= 1) return false;
         threadCount ++;
-        Bukkit.getLogger().info("add thread");
         return true;
     }
 
     public void threadFinished() {
-        Bukkit.getLogger().info("thread finished");
         threadCount --;
     }
 
