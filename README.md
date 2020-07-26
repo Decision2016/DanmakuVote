@@ -14,13 +14,13 @@
 
 ## 插件指令
 
-`setid [直播间room_id号]`:设置监听的直播间房间号
+`/bvote setid [直播间room_id号]`:设置监听的直播间房间号
 
-`setworld`: 设置当前所在世界为事件发生世界，对应配置文件中的world项
+`/bvote setworld`: 设置当前所在世界为事件发生世界，对应配置文件中的world项
 
-`voteswitch`: 设置插件状态，进行开和关
+`/bvote switch`: 设置插件状态，进行开和关
 
-`time [random|static] [mintime maxtime | statictime]`:设置随机投票时间区间或固定间隔时间
+`/bvote time [random|static] [mintime maxtime | statictime]`:设置随机投票时间区间或固定间隔时间
 
 ## 目前存在问题
 
