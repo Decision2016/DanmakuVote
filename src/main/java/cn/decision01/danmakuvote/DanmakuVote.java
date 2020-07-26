@@ -3,8 +3,13 @@ package cn.decision01.danmakuvote;
 import cn.decision01.danmakuvote.Commands.*;
 import cn.decision01.danmakuvote.Utlis.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
 
 public final class DanmakuVote extends JavaPlugin {
     private int threadCount;
@@ -24,11 +29,7 @@ public final class DanmakuVote extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Initialization();
-        Bukkit.getPluginCommand("setid").setExecutor(new VoteIdSetExecutor(this));
-        Bukkit.getPluginCommand("setworld").setExecutor(new VoteWorldSetExecutor(this));
-        Bukkit.getPluginCommand("time").setExecutor(new VoteTimeSetExecutor(this));
-        Bukkit.getPluginCommand("voteswitch").setExecutor(new VoteSwitchExecutor(this));
-        // Bukkit.getPluginCommand("showthreadinfo").setExecutor(new VoteDebugExecutor(this));
+        Bukkit.getPluginCommand("bvote").setExecutor(new VoteCommands(this));
     }
 
     @Override
@@ -52,7 +53,7 @@ public final class DanmakuVote extends JavaPlugin {
         return true;
     }
 
-    public void threadFinished() {
+    void threadFinished() {
         threadCount --;
     }
 

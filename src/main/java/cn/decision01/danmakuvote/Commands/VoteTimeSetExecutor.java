@@ -19,14 +19,14 @@ public class VoteTimeSetExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        switch (args[0]) {
+        switch (args[1]) {
             case "random": {
-                if (args.length != 3) return false;
+                if (args.length != 4) return false;
                 FileConfiguration config = plugin.getConfig();
                 int floor, ceil;
                 try {
-                    floor = Integer.parseInt(args[1]);
-                    ceil = Integer.parseInt(args[2]);
+                    floor = Integer.parseInt(args[2]);
+                    ceil = Integer.parseInt(args[3]);
                 } catch (NumberFormatException e) {
                     sender.sendMessage("Command error.");
                     return false;
@@ -36,14 +36,15 @@ public class VoteTimeSetExecutor implements CommandExecutor {
                 config.set("Setting.floor", floor);
                 config.set("Setting.ceil", ceil);
                 plugin.saveConfig();
+                sender.sendMessage(String.format("间隔时间已设置为%d - %d秒的随机时间.", floor, ceil));
                 return true;
             }
             case "static": {
-                if (args.length != 2) return false;
+                if (args.length != 3) return false;
                 FileConfiguration config = plugin.getConfig();
                 int spacing;
                 try {
-                    spacing = Integer.parseInt(args[1]);
+                    spacing = Integer.parseInt(args[2]);
                 } catch (NumberFormatException e) {
                     sender.sendMessage("Command error.");
                     return false;
@@ -52,6 +53,7 @@ public class VoteTimeSetExecutor implements CommandExecutor {
                     config.set("Setting.random", false);
                 config.set("Setting.space", spacing);
                 plugin.saveConfig();
+                sender.sendMessage(String.format("间隔时间已设置为固定%d秒.", spacing));
                 return true;
             }
             default: {

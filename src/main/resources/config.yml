@@ -12,3 +12,11 @@ Setting:
 
   # if random is false, use space as later time
   space: 300
+
+Monsters:
+  - "creeper"
+  - "enderman"
+
+Animals:
+  - "pig"
+  - "sheep"

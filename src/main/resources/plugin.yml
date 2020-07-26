@@ -23,4 +23,8 @@ commands:
     usage: /time [random|static] [mintime maxtime | statictime]
     permission: op
     permission-message: You don`t have <permission> permission.
+  bvote:
+    description: DanmakuVote Command
+    usage: /bvote <args>
+    permission: op
 

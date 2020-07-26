@@ -17,12 +17,12 @@ public class VoteIdSetExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length != 1 || !(sender instanceof Player)) {
+        if (args.length != 2 || !(sender instanceof Player)) {
             return false;
         }
 
         FileConfiguration config = plugin.getConfig();
-        config.set("Bilibili.room_id", Integer.parseInt(args[0]));
+        config.set("Bilibili.room_id", Integer.parseInt(args[1]));
         plugin.saveConfig();
         return true;
     }

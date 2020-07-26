@@ -17,7 +17,7 @@ public class VoteWorldSetExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length > 0 || !(sender instanceof Player)) {
+        if (args.length != 1 || !(sender instanceof Player)) {
             return false;
         }
 
