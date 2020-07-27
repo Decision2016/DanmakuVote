@@ -4,13 +4,13 @@
 ![](https://img.shields.io/badge/Minecraft-1.15.2-yellowgreen)
 ![](https://img.shields.io/badge/version-1.0-red)
 
-##Introduction
+## Introduction
 
 This is a plug-in that enables the Bilibili live room to interact with the Minecraft server
 
 You can set a random or fixed time to vote for the audience, receive the barrage of the designated live broadcast room for statistics, and finally realize the triggering of some events
 
-##Commands
+## Commands
 
 `/bvote setid [直播间room_id号]`:Set listening bilibili living room id
 
@@ -20,7 +20,7 @@ You can set a random or fixed time to vote for the audience, receive the barrage
 
 `/bvote time [random|static] [mintime maxtime | statictime]`: Set the next interval time as fixed or random
 
-##Problems
+## Problems
 
 * Some events may not take effect. For example, after voting to set the weather to sunny, it cannot be set to cloudy
 
