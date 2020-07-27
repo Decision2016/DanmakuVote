@@ -27,6 +27,6 @@ public class MonsterPut extends WorldEvent {
     public final void effect() {
         Player player = randomChosePlayer();
         Location location = player.getLocation();
-        Bukkit.getWorld(worldName).spawnEntity(location, RandomChooser.RandomMonsterChoose());
+        Bukkit.getWorld(worldName).spawnEntity(location, RandomChooser.RandomMonsterChoose(super.plugin));
     }
 }

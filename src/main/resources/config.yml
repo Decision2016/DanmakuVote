@@ -3,7 +3,7 @@ Bilibili:
 
 Setting:
   worldName: "world"
-  switch: true
+  switch: false
   random: true
 
   # if random is true, use floor and ceil
@@ -14,9 +14,18 @@ Setting:
   space: 300
 
 Monsters:
-  - "creeper"
-  - "enderman"
+  - ENDERMAN
+  - CREEPER
+  - SPIDER
+  - SHULKER
+  - ZOMBIE
 
 Animals:
-  - "pig"
-  - "sheep"
+  - PIG
+  - SHEEP
+  - COW
+  - CHICKEN
+  - HORSE
+  - PANDA
+  - RABBIT
+  - FOX

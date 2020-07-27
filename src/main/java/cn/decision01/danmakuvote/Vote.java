@@ -38,7 +38,6 @@ public class Vote {
         EventFactory factory = new EventFactory(plugin);
 
         while (list.size() < 3) {
-            // todo: 此处的代码逻辑需要等待测试
             now = EventEnum.values()[r.nextInt(length)];
             if (list.lastIndexOf(now) == -1) {
                 events[list.size()] = factory.generateEvent(now, worldName);

@@ -27,6 +27,6 @@ public class AnimalPut extends WorldEvent {
     public final void effect() {
         Player player = randomChosePlayer();
         Location location = player.getLocation();
-        Bukkit.getWorld(worldName).spawnEntity(location, RandomChooser.RandomAnimalChoose());
+        Bukkit.getWorld(worldName).spawnEntity(location, RandomChooser.RandomAnimalChoose(super.plugin));
     }
 }
