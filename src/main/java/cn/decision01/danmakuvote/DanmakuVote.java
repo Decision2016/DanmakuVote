@@ -1,15 +1,10 @@
 package cn.decision01.danmakuvote;
 
 import cn.decision01.danmakuvote.Commands.*;
-import cn.decision01.danmakuvote.Utlis.DanmakuTaskMonitor;
+import cn.decision01.danmakuvote.Utils.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
 
 public final class DanmakuVote extends JavaPlugin {
     private int threadCount;

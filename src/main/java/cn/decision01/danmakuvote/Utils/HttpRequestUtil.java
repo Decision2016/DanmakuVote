@@ -1,11 +1,11 @@
-package cn.decision01.danmakuvote.Utlis;
+package cn.decision01.danmakuvote.Utils;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HttpRequestUtli {
+public class HttpRequestUtil {
     public static String get(String _url) {
         HttpURLConnection connection = null;
         InputStream inputStream = null;

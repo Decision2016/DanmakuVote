@@ -3,7 +3,7 @@ package cn.decision01.danmakuvote.VoteEvents;
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.Events.WorldEvent;
-import cn.decision01.danmakuvote.Utlis.RandomChooser;
+import cn.decision01.danmakuvote.Utils.RandomChooser;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

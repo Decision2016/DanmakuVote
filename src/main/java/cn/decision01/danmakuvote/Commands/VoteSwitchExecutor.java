@@ -1,7 +1,7 @@
 package cn.decision01.danmakuvote.Commands;
 
 import cn.decision01.danmakuvote.DanmakuVote;
-import cn.decision01.danmakuvote.Utlis.DanmakuTaskMonitor;
+import cn.decision01.danmakuvote.Utils.DanmakuTaskMonitor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-package cn.decision01.danmakuvote.Utlis;
+package cn.decision01.danmakuvote.Utils;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Tasks.DanmakuListenTask;
