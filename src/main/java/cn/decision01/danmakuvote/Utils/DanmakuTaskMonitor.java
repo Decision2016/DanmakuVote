@@ -22,7 +22,7 @@ public class DanmakuTaskMonitor {
 
         if (! plugin.getSwitchStatus()) return ;
 
-        if (plugin.addThreadCount()) {
+        if (plugin.addThreadCount(timeSpace)) {
             DanmakuListenTask task = new DanmakuListenTask(plugin);
             task.runTaskLaterAsynchronously(plugin, timeSpace * Constants.onSecond);
             Bukkit.getLogger().info(String.format("下一次投票任务定于%d秒后进行", timeSpace));

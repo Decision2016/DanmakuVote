@@ -2,11 +2,11 @@ package cn.decision01.danmakuvote.VoteEvents;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
-import cn.decision01.danmakuvote.Events.WorldEvent;
+import cn.decision01.danmakuvote.Events.VoteEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
-public class WeatherChange extends WorldEvent {
+public class WeatherChange extends VoteEvent {
     private World world;
 
     public WeatherChange(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {

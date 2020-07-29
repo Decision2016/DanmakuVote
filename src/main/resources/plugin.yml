@@ -3,28 +3,9 @@ version: ${project.version}
 main: cn.decision01.danmakuvote.DanmakuVote
 api-version: 1.13
 commands:
-  setid:
-    description: Set your bilibili live id
-    usage: /vote setid [live id]
-    permission: op
-    permission-message: You don`t have <permission> permission.
-  setworld:
-    description: Set now world efffected
-    usage: /vote setworld
-    permission: op
-    permission-message: You don`t have <permission> permission
-  voteswitch:
-    description: Switch plugin running status
-    usage: /vote switch
-    permission: op
-    permission-message: You don`t have <permission> permission.
-  time:
-    description: Vote time set
-    usage: /time [random|static] [mintime maxtime | statictime]
-    permission: op
-    permission-message: You don`t have <permission> permission.
   bvote:
     description: DanmakuVote Command
     usage: /bvote <args>
     permission: op
+    permission-message: You don`t have <permission> permission.
 

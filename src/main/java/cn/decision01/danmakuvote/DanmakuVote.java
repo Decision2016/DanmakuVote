@@ -3,12 +3,14 @@ package cn.decision01.danmakuvote;
 import cn.decision01.danmakuvote.Commands.*;
 import cn.decision01.danmakuvote.Utils.DanmakuTaskMonitor;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DanmakuVote extends JavaPlugin {
     private int threadCount;
     private FileConfiguration config;
+    public long nextTimestamp;
 
     private void Initialization() {
         this.saveDefaultConfig();
@@ -42,17 +44,15 @@ public final class DanmakuVote extends JavaPlugin {
         return config.getBoolean("Setting.switch");
     }
 
-    public boolean addThreadCount() {
+    public boolean addThreadCount(int second) {
         if (threadCount >= 1) return false;
+        this.nextTimestamp = second + System.currentTimeMillis() / 1000;
         threadCount ++;
         return true;
     }
 
     void threadFinished() {
         threadCount --;
-    }
-
-    public int getThreadCount() {
-        return threadCount;
+        nextTimestamp = -1;
     }
 }
