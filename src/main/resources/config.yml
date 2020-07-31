@@ -1,18 +1,24 @@
 Bilibili:
+  # 监听直播间房间号
   room_id: 0
 
 Setting:
+  # 当前影响世界名
   worldName: "world"
+  # 插件开关
   switch: false
+  # 插件时间间隔选择是否随机
   random: true
 
-  # if random is true, use floor and ceil
+  # 如果random为true，使用此配置选择时间间隔
   floor: 180
   ceil: 300
 
-  # if random is false, use space as later time
+  # 如果random为false，使用此配置选择时间间隔
   space: 300
 
+# 怪物的实体名称，如果需要添加其他的可以自行添加
+# 建议使用大小写，这里的实体名称如果不是怪物也会生效，谨慎填写
 Monsters:
   - ENDERMAN
   - CREEPER
@@ -20,6 +26,7 @@ Monsters:
   - SHULKER
   - ZOMBIE
 
+# 同怪物实体名称配置
 Animals:
   - PIG
   - SHEEP
