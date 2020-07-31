@@ -20,7 +20,7 @@ public class VoteStatusExecutor implements CommandExecutor {
             return false;
         }
 
-        int nextTimestamp = plugin.nextTimestamp;
+        long nextTimestamp = plugin.nextTimestamp;
         long space = nextTimestamp - System.currentTimeMillis() / 1000;
         String msg;
         if (nextTimestamp == -1) {

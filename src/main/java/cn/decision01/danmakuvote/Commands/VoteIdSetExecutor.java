@@ -22,7 +22,9 @@ public class VoteIdSetExecutor implements CommandExecutor {
         }
 
         FileConfiguration config = plugin.getConfig();
+        // todo: room_id检测合法
         config.set("Bilibili.room_id", Integer.parseInt(args[1]));
+        sender.sendMessage(String.format("已将当前监听直播间id设置为%d.", Integer.parseInt(args[1])));
         plugin.saveConfig();
         return true;
     }

@@ -27,6 +27,7 @@ public class VoteWorldSetExecutor implements CommandExecutor {
         //todo: player exception error ?
         String worldName = player.getWorld().getName();
         config.set("Setting.worldName", worldName);
+        sender.sendMessage("已将影响世界设置为当前所在世界.");
         plugin.saveConfig();
         return true;
     }
