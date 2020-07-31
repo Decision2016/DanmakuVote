@@ -36,4 +36,5 @@ public class VoteStatusExecutor implements CommandExecutor {
 
         return true;
     }
+
 }
