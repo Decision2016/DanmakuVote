@@ -1,0 +1,14 @@
+Events:
+  WeatherClear:
+    name: "Weather Clear"
+  WeatherStorm:
+    name: "Weather Storm"
+  WeatherThunder:
+    name: "Weather Thunder"
+  MonsterPut:
+    name: "Put Monster"
+  PlayerTeleport:
+    name: "Teleport Player"
+  AnimalPut:
+    name: "Put Animal"
+
