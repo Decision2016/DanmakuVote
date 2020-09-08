@@ -4,6 +4,7 @@ import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.Tasks.PlayerTeleportTask;
 import cn.decision01.danmakuvote.Events.VoteEvent;
+import cn.decision01.danmakuvote.Utils.RandomChooser;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -32,13 +33,6 @@ public class PlayerTeleport extends VoteEvent {
         }
     }
 
-    private Player randomChosePlayer() {
-        // todo： 存在空指针问题
-        List<Player> players = Bukkit.getWorld(worldName).getPlayers();
-        Collections.shuffle(players);
-        return players.get(0);
-    }
-
     private Location randomChoseLocation(Player player) {
         Location nowLocation = player.getLocation();
         nowLocation.setX(randomValue(nowLocation.getX(), false));
@@ -49,7 +43,7 @@ public class PlayerTeleport extends VoteEvent {
 
     public final void effect() {
         // todo: 完善事件生效
-        Player player = randomChosePlayer();
+        Player player = RandomChooser.RandomPlayer(worldName);
         Location destination = randomChoseLocation(player);
         player.sendMessage(String.format("恭喜您被选为幸运玩家，5秒后将会传送到坐标(%d, %d, %d)，祝您一路顺风。", destination.getBlockX(), destination.getBlockY(), destination.getBlockZ()));
         PlayerTeleportTask task = new PlayerTeleportTask(player, destination);

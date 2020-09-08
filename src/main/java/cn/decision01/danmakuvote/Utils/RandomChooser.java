@@ -1,9 +1,12 @@
 package cn.decision01.danmakuvote.Utils;
 
 import cn.decision01.danmakuvote.DanmakuVote;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -33,6 +36,12 @@ public final class RandomChooser {
 
     public static EntityType RandomAnimalChoose(DanmakuVote plugin) {
         return RandomEntityChoose(plugin, "Animals");
+    }
+
+    public static Player RandomPlayer(String worldName) {
+        List<Player> players = Bukkit.getWorld(worldName).getPlayers();
+        Collections.shuffle(players);
+        return players.get(0);
     }
 
 }
