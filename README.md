@@ -40,6 +40,12 @@
 
 `PLAYER_PUT_ANIMAL`：在玩家位置生成一个动物
 
+`PLAYER_FIRE`: 随机选取一名玩家着火
+
+`PLAYER_THUNDER`: 随机选取一名玩家被雷击
+
+`INVENTORY_CLEAR`: 随机选取一名玩家清空背包
+
 ## 相关信息
 
 本插件的idea来自于Ubisoft的Hyper Space，游戏可以在Twitch平台进行投票影响游戏进程
