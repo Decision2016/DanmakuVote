@@ -1,12 +1,11 @@
 package cn.decision01.danmakuvote.VoteEvents;
 
-        import cn.decision01.danmakuvote.DanmakuVote;
-        import cn.decision01.danmakuvote.Enums.EventEnum;
-        import cn.decision01.danmakuvote.Events.VoteEvent;
-        import cn.decision01.danmakuvote.Tasks.InventoryClearTask;
-        import cn.decision01.danmakuvote.Utils.RandomChooser;
-        import org.bukkit.entity.Player;
-        import org.bukkit.inventory.PlayerInventory;
+import cn.decision01.danmakuvote.DanmakuVote;
+import cn.decision01.danmakuvote.Enums.EventEnum;
+import cn.decision01.danmakuvote.Events.VoteEvent;
+import cn.decision01.danmakuvote.Tasks.InventoryClearTask;
+import cn.decision01.danmakuvote.Utils.RandomChooser;
+import org.bukkit.entity.Player;
 
 public class InventoryClear extends VoteEvent {
 
