@@ -1,14 +1,74 @@
-Events:
-  WeatherClear:
-    name: "Weather Clear"
-  WeatherStorm:
-    name: "Weather Storm"
-  WeatherThunder:
-    name: "Weather Thunder"
-  MonsterPut:
-    name: "Put Monster"
-  PlayerTeleport:
-    name: "Teleport Player"
-  AnimalPut:
-    name: "Put Animal"
+WeatherClear:
+  name: "Weather Clear"
+  switch: true
+  description: ""
+  hint: ""
 
+WeatherStorm:
+  name: "Weather Storm"
+  switch: true
+  description: ""
+  hint: ""
+
+WeatherThunder:
+  name: "Weather Thunder"
+  swtich: true
+  description: ""
+  hint: ""
+
+MonsterPut:
+  name: "Put Monster"
+  swtich: true
+  description: ""
+  hint: ""
+
+PlayerTeleport:
+  name: "Teleport Player"
+  swtich: true
+  description: ""
+  hint: ""
+
+AnimalPut:
+  name: "Put Animal"
+  swtich: true
+  description: ""
+  hint: ""
+
+FirePlayer:
+  name: "Fire Player"
+  ticks: 600
+  switch: true
+  description: ""
+  hint: ""
+
+Thunder:
+  name: "Thunder Player"
+  description: ""
+  switch: true
+  hint: ""
+
+BlockDelete:
+  name: "Block Delete"
+  description: ""
+  switch: true
+  hint: ""
+
+BagClear:
+  name: "Bag Clear"
+  description: ""
+  switch: true
+  hint: ""
+
+FreezePlayer:
+  name: "Freeze Player"
+  description: ""
+  switch: true
+  ticks: 600
+  hint: ""
+
+PlayerInvincible:
+  name: "Player Invincible"
+  description: ""
+  switch: true
+  ticks: 600
+  hint: ""
