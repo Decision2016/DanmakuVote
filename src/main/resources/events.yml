@@ -45,7 +45,7 @@ Thunder:
 BlockDelete:
   name: "Block Delete"
   description: "删除某个玩家附近的随机区块"
-  switch: true
+  switch: false
   hint: ""
 
 InventoryClear:

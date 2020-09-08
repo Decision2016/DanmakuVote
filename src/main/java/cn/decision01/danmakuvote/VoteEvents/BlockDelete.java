@@ -8,4 +8,9 @@ public class BlockDelete extends VoteEvent {
     public BlockDelete(String _worldName, String _configName, EventEnum _type, DanmakuVote _plugin) {
         super(_worldName, _configName, _type, _plugin);
     }
+
+    @Override
+    public void effect() {
+
+    }
 }
