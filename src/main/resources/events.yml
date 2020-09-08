@@ -1,74 +1,70 @@
 WeatherClear:
   name: "Weather Clear"
   switch: true
-  description: ""
-  hint: ""
+  description: "将天气修改为无天气"
 
 WeatherStorm:
   name: "Weather Storm"
   switch: true
-  description: ""
-  hint: ""
+  description: "将天气修改为雨天"
 
 WeatherThunder:
   name: "Weather Thunder"
   swtich: true
-  description: ""
-  hint: ""
+  description: "将天气修改为雷雨天"
 
 MonsterPut:
   name: "Put Monster"
   swtich: true
-  description: ""
-  hint: ""
+  description: "放置一个怪物到一个随机玩家身边"
 
 PlayerTeleport:
   name: "Teleport Player"
   swtich: true
-  description: ""
+  description: "随机选取一名幸运玩家传送到一个随机位置"
   hint: ""
 
 AnimalPut:
   name: "Put Animal"
   swtich: true
-  description: ""
-  hint: ""
+  description: "放置一个动物到随机玩家的身边"
 
 FirePlayer:
   name: "Fire Player"
   ticks: 600
   switch: true
-  description: ""
+  description: "随机选取一个玩家着火"
   hint: ""
 
 Thunder:
   name: "Thunder Player"
-  description: ""
+  description: "随机选取一个玩家被雷击"
   switch: true
   hint: ""
 
 BlockDelete:
   name: "Block Delete"
-  description: ""
+  description: "删除某个玩家附近的随机区块"
   switch: true
   hint: ""
 
-BagClear:
-  name: "Bag Clear"
-  description: ""
+InventoryClear:
+  name: "Inventory Clear"
+  description: "选取一个玩家在一定时间后清空背包"
   switch: true
+  ticks: 600
   hint: ""
 
 FreezePlayer:
   name: "Freeze Player"
-  description: ""
+  description: "选取一个玩家固定（冻结）一段时间"
   switch: true
   ticks: 600
   hint: ""
 
 PlayerInvincible:
   name: "Player Invincible"
-  description: ""
+  description: "选取一个玩家持续无敌状态一段时间"
   switch: true
   ticks: 600
   hint: ""

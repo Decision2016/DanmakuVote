@@ -39,8 +39,9 @@ public class Vote {
 
         while (list.size() < 3) {
             now = EventEnum.values()[r.nextInt(length)];
-            if (list.lastIndexOf(now) == -1) {
-                events[list.size()] = factory.generateEvent(now, worldName);
+            VoteEvent tempEvent = factory.generateEvent(now, worldName);
+            if (tempEvent.getEventSwitch() && list.lastIndexOf(now) == -1) {
+                events[list.size()] = tempEvent;
                 list.add(now);
             }
         }
