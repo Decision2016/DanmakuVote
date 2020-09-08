@@ -6,7 +6,7 @@ import cn.decision01.danmakuvote.Utils.FileUtil;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class VoteEvent {
-    public final String configFileName = "event.yml";
+    public final String configFileName = "events.yml";
 
     protected String worldName = null;
     protected EventEnum EventType;
