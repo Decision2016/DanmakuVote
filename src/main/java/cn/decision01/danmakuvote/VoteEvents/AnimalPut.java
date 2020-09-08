@@ -13,8 +13,8 @@ import java.util.List;
 
 public class AnimalPut extends VoteEvent {
 
-    public AnimalPut(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
-        super(_worldName, _eventName, _description, _type, _plugin);
+    public AnimalPut(String _worldName, String _configName, EventEnum _type, DanmakuVote _plugin) {
+        super(_worldName, _configName, _type, _plugin);
     }
 
     Player randomChosePlayer() {

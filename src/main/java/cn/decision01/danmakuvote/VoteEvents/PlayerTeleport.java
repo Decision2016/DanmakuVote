@@ -2,22 +2,19 @@ package cn.decision01.danmakuvote.VoteEvents;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import cn.decision01.danmakuvote.Enums.EventEnum;
-import cn.decision01.danmakuvote.Tasks.PlayerTeleportTask;
 import cn.decision01.danmakuvote.Events.VoteEvent;
+import cn.decision01.danmakuvote.Tasks.PlayerTeleportTask;
 import cn.decision01.danmakuvote.Utils.RandomChooser;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class PlayerTeleport extends VoteEvent {
 
 
-    public PlayerTeleport(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
-        super(_worldName, _eventName, _description, _type, _plugin);
+    public PlayerTeleport(String _worldName, String _configName, EventEnum _type, DanmakuVote _plugin) {
+        super(_worldName, _configName, _type, _plugin);
     }
 
     private double randomValue(double origin, boolean isHeightPos) {

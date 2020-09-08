@@ -5,7 +5,7 @@ import cn.decision01.danmakuvote.Enums.EventEnum;
 import cn.decision01.danmakuvote.Events.VoteEvent;
 
 public class FreezePlayer extends VoteEvent {
-    public FreezePlayer(String _worldName, String _eventName, String _description, EventEnum _type, DanmakuVote _plugin) {
-        super(_worldName, _eventName, _description, _type, _plugin);
+    public FreezePlayer(String _worldName, String _configName, EventEnum _type, DanmakuVote _plugin) {
+        super(_worldName, _configName, _type, _plugin);
     }
 }
