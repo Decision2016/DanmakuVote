@@ -2,6 +2,8 @@ package cn.decision01.danmakuvote.Utils;
 
 import cn.decision01.danmakuvote.DanmakuVote;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -44,4 +46,16 @@ public final class RandomChooser {
         return players.get(0);
     }
 
+    public static Chunk RandomChunkChoose(Player player) {
+        Location location = player.getLocation();
+        Random r = new Random();
+
+        int xDelta = r.nextInt(3) - 1;
+        int zDelta = r.nextInt(3) - 1;
+
+        location.setX(location.getX() + xDelta);
+        location.setZ(location.getZ() + zDelta);
+
+        return player.getWorld().getChunkAt(location);
+    }
 }

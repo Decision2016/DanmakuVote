@@ -41,7 +41,7 @@ public class EventFactory {
                 return new InventoryClear(worldName, "InventoryClear", EventEnum.INVENTORY_CLEAR, plugin);
             }
             case BLOCK_DELETE: {
-                return new BlockDelete(worldName, "BlockDelete", EventEnum.BLOCK_DELETE, plugin);
+                return new ChunkDelete(worldName, "BlockDelete", EventEnum.BLOCK_DELETE, plugin);
             }
             /*
             case PLAYER_FREEZE: {
